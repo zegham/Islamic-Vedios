@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -78,20 +78,15 @@
 #sidebar .list-items li{
   padding-left: 40px;
   line-height: 50px;
-	
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid #333;
   transition: all 0.3s ease;
   position:relative;
 }
 #sidebar .list-items li:hover{
-	color: cyan;
-  border-radius: 5px;
-  box-shadow:  0 0 5px #33ffff,
-               0 0 10px #66ffff;
-  /*border-top: 1px solid transparent;
+  border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  box-shadow: 0 0px 10px 3px solid #2222;*/
+  box-shadow: 0 0px 10px 3px #222;
 }
 #sidebar .list-items li:first-child{
   border-top: none;
@@ -168,18 +163,17 @@ list-style:none;
 display:block;
  }
 #img-top{
-  background: url(electronic-gadgets.jpg) no-repeat;
-  background-attachment: fixed;
+  background: url(islamic.jpg) no-repeat;
   background-size: cover;
- height:680px;
- width:1000%;	
+  height:100%;
+  width:100%;
 }
 
-#img-top h1
+#h1
 {
-color:white;
+color:black;
 font-family:lora;
-font-size:20px;
+font-size:30px;
 text-align:center;
 padding-top:45px;
 }
@@ -191,4 +185,14 @@ font-family:oxygen;
 text-align:center;
 font-size:auto;
 }
+div.ex1 {
+  width: 315px;
+  margin: auto;
+ //border:4px solid #73AD21;
+}
 
+div.ex2 {
+  max-width: 315px;
+  margin: auto;
+  //border:4px solid #73AD21;
+}
