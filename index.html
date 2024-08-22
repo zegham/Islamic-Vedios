@@ -1,15 +1,18 @@
-  <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>ISLAMIC MEDIA | CodingLab</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- YouTube API Script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
   </head>
   <body>
     <div class="wrapper">
+      <div class="wrapper">
       <input type="checkbox" id="btn" hidden>
       <label for="btn" class="menu-btn">
         <i class="fas fa-bars"></i>
@@ -39,19 +42,84 @@
         </ul>
       </nav>
     </div>
-<h2><center>  NAAT </center></h2>
-<div class="ex1">
-<div class="ex1">
-<div class="ex2"><iframe width="315" height="315" style="border:1px solid" src="https://drive.google.com/file/d/1Z4Y0NNgw9YC2cHn7M9fxLi4VqB09Xmhm/preview"></iframe></div>
-<div class="ex2"><center>Collection of best Naats</center></div>
- <iframe style="width="315";height="315";position:absolute;left:0px;top:0px;overflow:hidden" frameborder="1" type="text/html" src="https://www.youtube.com/embed/a18py61_F_w?autoplay=0"&fs=0" width="315" height="315"> </iframe> 
-<div class="ex1"></div>	  
-<iframe style="width="315";height="315";position:absolute;left:0px;top:0px;overflow:hidden" frameborder="1" type="text/html" src="https://www.youtube.com/embed/DLJxUSwU_7E?autoplay=0"&fs=0" width="315" height="315"> </iframe> 
-		
- <iframe style="width="315";height="315";position:absolute;left:0px;top:0px;overflow:hidden" frameborder="1" type="text/html" src="https://www.dailymotion.com/embed/video/x8k41b0?autoplay=0" width="315" height="315"> </iframe> 																						
- <iframe style="width="315";height="315";position:absolute;left:0px;top:0px;overflow:hidden" frameborder="1" type="text/html" src="https://www.dailymotion.com/embed/video/x2pyumf"?autoplay=0"&fs=0" width="315" height="315"> </iframe> 
-</div>
-</div>
+    </div>
+    <h2><center>NAAT</center></h2>
+    <div class="ex1">
+      <div class="ex2"><center>Collection of best Naats</center></div>
+	  
+	  
+      <div id="videoContainer">
+        <!-- YouTube Videos (Controlled via API) -->
+        <div id="player1" class="video-player"></div>
+      </div>
+      <!-- Back and Next Buttons -->
+      <div style="text-align: center; margin-top: 20px;">
+        <button id="backButton" style="padding: 10px 20px; font-size: 16px; margin-right: 10px;">Back Video</button>
+        <button id="nextButton" style="padding: 10px 20px; font-size: 16px;">Next Video</button>
+      </div>
+    </div>
 
-</body>
+    <script>
+      let player;
+      let currentIndex = 0;
+
+      // Video playlist with indexes
+      const videoPlaylist = [
+          { index: 1, videoId: 'a18py61_F_w' },//first vedio
+        { index: 2, videoId: 'SkjZc9cgC9w' },//secand vedio
+        { index: 3, videoId: 'dLAoN_-tMqg' },
+        { index: 4, videoId: 'f-rfS-DbxyY' },
+        { index: 5, videoId: 'a18py61_F_w' }, 
+      //{ index: 6, videoId: '' },   
+      //{ index: 7, videoId: '' },   
+      //{ index: 8, videoId: '' },   
+      //{ index: 9, videoId: '' },   
+      //{ index: 10, videoId: '' },   
+      //{ index: 11, videoId: '' },   
+      //{ index: 12, videoId: '' },   
+      //{ index: 13, videoId: '' },   	
+      ];
+
+      // Function to load the YouTube API and create the player
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player1', {
+          height: '315',
+          width: '315',
+          videoId: videoPlaylist[currentIndex].videoId,
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // Function to handle video state changes
+      function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+          playNextVideo();
+        }
+      }
+
+      // Function to play the next video based on index
+      function playNextVideo() {
+        currentIndex = (currentIndex + 1) % videoPlaylist.length;
+        player.loadVideoById(videoPlaylist[currentIndex].videoId);
+      }
+
+      // Function to play the previous video based on index
+      function playPreviousVideo() {
+        currentIndex = (currentIndex - 1 + videoPlaylist.length) % videoPlaylist.length;
+        player.loadVideoById(videoPlaylist[currentIndex].videoId);
+      }
+
+      // Event listener for the "Next" button
+      document.getElementById('nextButton').addEventListener('click', function() {
+        playNextVideo();
+      });
+
+      // Event listener for the "Back" button
+      document.getElementById('backButton').addEventListener('click', function() {
+        playPreviousVideo();
+      });
+    </script>
+  </body>
 </html>
