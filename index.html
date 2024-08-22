@@ -65,7 +65,7 @@
 
       // Video playlist with indexes
       const videoPlaylist = [
-          { index: 1, videoId: 'a18py61_F_w' },//first vedio
+        { index: 1, videoId: 'a18py61_F_w' },//first vedio
         { index: 2, videoId: 'SkjZc9cgC9w' },//secand vedio
         { index: 3, videoId: 'dLAoN_-tMqg' },
         { index: 4, videoId: 'f-rfS-DbxyY' },
@@ -83,8 +83,8 @@
       // Function to load the YouTube API and create the player
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player1', {
-          height: '315',
-          width: '315',
+          height: '312',
+          width: '312',
           videoId: videoPlaylist[currentIndex].videoId,
           events: {
             'onStateChange': onPlayerStateChange
