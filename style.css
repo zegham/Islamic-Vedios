@@ -192,7 +192,7 @@ div.ex1 {
 }
 
 div.ex2 {
-padding-top:20px;	
+top:20px;	
 text-align:center;
 max-width: 315px;
 color:#04AA6D;
